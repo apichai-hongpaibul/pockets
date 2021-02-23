@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  
+  <title>{% if page.title %}{{ page.title }} - {% endif %}{{ config.site_name }}</title>
+
+     <link rel="shortcut icon" href="{{ "img/favicon.ico"|url }}">
+
+
+  <link rel="stylesheet" href="https://unpkg.com/purecss@1.0.0/build/pure-min.css">
+  <link rel="stylesheet" href="{{ "css/theme.css"|url }}">
+  <link rel="stylesheet" href="https://boxnovel.com/wp-content/themes/madara/style.css?ver=5.3.2">
+
+  {% for path in config.extra_css %}
+    <link href="{{ path|url }}" rel="stylesheet">
+  {% endfor %}
+
+  <script
+  src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+  integrity="sha256-3edrmyuQ0w65f8gfBsqowzjJe2iM6n0nKciPUp8y+7E="
+  crossorigin="anonymous"></script>
+  <script src="{{ "js/theme.js"|url }}"></script>
+
+  {% block extrahead %}
+  {% endblock %}
+
+  {% for path in config.extra_javascript %}
+    <script src="{{ path|url }}"></script>
+  {% endfor %}
+
+</head>
+
+<body>
+  <p>
+    All my collections.
+  </p>
+
+  <h2>Support for search</h2>
+  <div role="search">
+    <form action="{{ "search.html"|url }}" method="get">
+      <input type="search" name="q" placeholder="Search docs" />
+    </form>
+  </div>
+
+  <hr/>
+
+  {% if page.next_page or page.previous_page %}
+    <div class="nav-links">
+      {% if page.previous_page %}
+      	<div class="nav-previous">
+        <a href="{{ page.previous_page.url|url }}" title="{{ page.previous_page.title }}">&#8592; Previous Page</a>
+	</div>
+      {% endif %}
+      -
+      {% if page.next_page %}
+      	<div class="nav-next">
+        <a href="{{ page.next_page.url|url }}" title="{{ page.next_page.title }}"/>Next Page &#8594;</a>
+	</div>
+      {% endif %}
+    </div>
+  {% endif %}
+
+  <hr/>
+
+  {% block content %}
+  <div class="reading-content">
+    {{ page.content }}
+  </div>
+  {% endblock %}
+
+  <hr/>
+</body>
+</html>

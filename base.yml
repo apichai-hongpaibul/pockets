@@ -1,0 +1,5 @@
+site_name: My Collections Novels
+theme:
+  name: null
+  custom_dir: 'my_theme/'
+nav:
