@@ -7,6 +7,9 @@ try:
     index = 0
     for item in data:
         url = data[item].get('given_url')
+        if "boxnovel" not in url:
+            print(f'[{index}] not remove {url} {item}')
+            continue
         index += 1
         print(f'[{index}] remove {url} {item}')
         p.delete(item, 0)
